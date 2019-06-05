@@ -18,7 +18,7 @@ namespace ProyectoFinalReproductorMP3
 {
     public partial class Form1 : Form
     {
-        List<ClassCancion> cancion = new List<ClassCancion>();
+        List<ClassCancion> listCancion = new List<ClassCancion>();
 
 
         public Form1()
@@ -119,11 +119,11 @@ namespace ProyectoFinalReproductorMP3
             {
                 string lectura = reader.ReadLine();
                 ClassCancion cancionLeido = JsonConvert.DeserializeObject<ClassCancion>(lectura);
-                cancion.Add(cancionLeido);
+                listCancion.Add(cancionLeido);
             }
             reader.Close();
             //Mostrar la lista de alquileres en el gridview
-            dataGridView1.DataSource = cancion;
+            dataGridView1.DataSource = listCancion;
             dataGridView1.Refresh();
         }
 
@@ -131,7 +131,6 @@ namespace ProyectoFinalReproductorMP3
         {
             reproductor.URL = dataGridView1.CurrentCell.Value.ToString();
             label3.Text = System.IO.Path.GetFileName(reproductor.URL);
-            //reproductor.URL = label2.Text;
             reproductor.Ctlcontrols.play();
         }
 
@@ -157,5 +156,24 @@ namespace ProyectoFinalReproductorMP3
         {
             reproductor.Ctlcontrols.stop();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //Declarar un objeto de Clase cliente
+            ClassLista listaJson = new ClassLista();
+            //Asignarle valores al cliente
+            listaJson.NombreList = textBox1.Text;
+
+            //Convertir el objeto en una cadena JSON
+            string salida = JsonConvert.SerializeObject(listaJson);
+            //Guardar el archivo de texto, con extension Json
+            FileStream stream = new FileStream("Lista.json", FileMode.Append, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            MessageBox.Show("La Lista: " + listaJson.NombreList + " se Registro Correctamente");
+            writer.WriteLine(salida);
+            writer.Close();
+        }
+
+       
     }
 }
