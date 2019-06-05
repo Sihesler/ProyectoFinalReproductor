@@ -79,7 +79,7 @@ namespace ProyectoFinalReproductorMP3
 
 
             //Indicar que se terminó la conversion
-            txtMensaje.Text = "Archivo Convertido en MP3";
+            txtMensaje.Text = "Video Convertido en MP3";
             tmrVideo.Enabled = false;
             txtMensaje.BackColor = Color.White;
 
