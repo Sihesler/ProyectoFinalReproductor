@@ -18,6 +18,7 @@ namespace ProyectoFinalReproductorMP3
 {
     public partial class Form1 : Form
     {
+        int contador = -1;
         List<ClassCancion> listCancion = new List<ClassCancion>();
 
 
@@ -93,8 +94,9 @@ namespace ProyectoFinalReproductorMP3
             ClassCancion cancionJson = new ClassCancion();
             string nombre = System.IO.Path.GetFileName(SaveMP3File);
             //Asignarle valores al cliente
-            cancionJson.Ubicacion = SaveMP3File;
             cancionJson.Nombre = nombre;
+            cancionJson.Ubicacion = SaveMP3File;
+            
 
             //Convertir el objeto en una cadena JSON
             string salida = JsonConvert.SerializeObject(cancionJson);
@@ -120,6 +122,7 @@ namespace ProyectoFinalReproductorMP3
                 string lectura = reader.ReadLine();
                 ClassCancion cancionLeido = JsonConvert.DeserializeObject<ClassCancion>(lectura);
                 listCancion.Add(cancionLeido);
+                contador = contador + 1;
             }
             reader.Close();
             //Mostrar la lista de alquileres en el gridview
@@ -174,6 +177,55 @@ namespace ProyectoFinalReproductorMP3
             writer.Close();
         }
 
-       
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int ind;
+            ind = dataGridView1.CurrentRow.Index;
+
+            if (ind > 0)
+            {
+                dataGridView1.CurrentCell = dataGridView1[1, ind - 1];
+
+                int inu;
+                inu = dataGridView1.CurrentRow.Index;
+                reproductor.URL = dataGridView1[1, inu].Value.ToString();
+            }
+            else
+            {
+                dataGridView1.CurrentCell = dataGridView1[1, contador];
+
+                int inu;
+                inu = dataGridView1.CurrentRow.Index;
+                reproductor.URL = dataGridView1[1, inu].Value.ToString();
+
+
+
+
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int ind;
+            ind = dataGridView1.CurrentRow.Index;
+            if (ind < contador)
+            {
+                dataGridView1.CurrentCell = dataGridView1[1, ind + 1];
+                int inu;
+
+                inu = dataGridView1.CurrentRow.Index;
+                reproductor.URL = dataGridView1[1, inu].Value.ToString();
+            }
+            else
+            {
+                dataGridView1.CurrentCell = dataGridView1[1, 0];
+                int inu;
+
+                inu = dataGridView1.CurrentRow.Index;
+                reproductor.URL = dataGridView1[1, inu].Value.ToString();
+
+
+            }
+        }
     }
 }

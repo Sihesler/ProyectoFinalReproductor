@@ -8,21 +8,8 @@ namespace ProyectoFinalReproductorMP3
 {
     class ClassCancion
     {
-        string ubicacion;
         string nombre;
-
-        public string Ubicacion
-        {
-            get
-            {
-                return ubicacion;
-            }
-
-            set
-            {
-                ubicacion = value;
-            }
-        }
+        string ubicacion;
 
         public string Nombre
         {
@@ -34,6 +21,19 @@ namespace ProyectoFinalReproductorMP3
             set
             {
                 nombre = value;
+            }
+        }
+
+        public string Ubicacion
+        {
+            get
+            {
+                return ubicacion;
+            }
+
+            set
+            {
+                ubicacion = value;
             }
         }
     }
