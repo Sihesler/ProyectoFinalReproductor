@@ -8,18 +8,32 @@ namespace ProyectoFinalReproductorMP3
 {
     class ClassLista
     {
-        string nombreList;
+        string nombre;
+        string ubicacion;
 
-        public string NombreList
+        public string Nombre
         {
             get
             {
-                return nombreList;
+                return nombre;
             }
 
             set
             {
-                nombreList = value;
+                nombre = value;
+            }
+        }
+
+        public string Ubicacion
+        {
+            get
+            {
+                return ubicacion;
+            }
+
+            set
+            {
+                ubicacion = value;
             }
         }
     }

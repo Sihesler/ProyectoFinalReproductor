@@ -162,19 +162,30 @@ namespace ProyectoFinalReproductorMP3
 
         private void button6_Click(object sender, EventArgs e)
         {
-            //Declarar un objeto de Clase cliente
-            ClassLista listaJson = new ClassLista();
-            //Asignarle valores al cliente
-            listaJson.NombreList = textBox1.Text;
-
-            //Convertir el objeto en una cadena JSON
-            string salida = JsonConvert.SerializeObject(listaJson);
             //Guardar el archivo de texto, con extension Json
-            FileStream stream = new FileStream("Lista.json", FileMode.Append, FileAccess.Write);
+            FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + textBox1.Text + ".json", FileMode.Append, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
-            MessageBox.Show("La Lista: " + listaJson.NombreList + " se Registro Correctamente");
-            writer.WriteLine(salida);
+            MessageBox.Show("La Lista: " + textBox1.Text + " se Creó Correctamente");
+            // writer.WriteLine(salida);
+            //writer.Close();
+            foreach (string k in listBox2.Items)
+            {
+                //Declarar un objeto de Clase cliente
+                ClassLista listaJson = new ClassLista();
+                //Asignarle valores al cliente
+                listaJson.Nombre = System.IO.Path.GetFileName(k);
+                listaJson.Ubicacion = k;
+
+                //Convertir el objeto en una cadena JSON
+                string salida = JsonConvert.SerializeObject(listaJson);
+
+                writer.WriteLine(salida);
+                // musicas.Add(k);
+                
+            }
             writer.Close();
+            listBox1.Items.Clear();
+            textBox1.Clear();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -226,6 +237,12 @@ namespace ProyectoFinalReproductorMP3
 
 
             }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            listBox2.Items.Add(this.dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            listBox1.Items.Add(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());            
         }
     }
 }

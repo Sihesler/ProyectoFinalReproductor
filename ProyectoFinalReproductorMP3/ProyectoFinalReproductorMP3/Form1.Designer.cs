@@ -51,21 +51,21 @@
             this.button6 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.reproductor)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(653, 531);
+            this.button5.Location = new System.Drawing.Point(124, 504);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(50, 23);
             this.button5.TabIndex = 36;
@@ -75,7 +75,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(607, 531);
+            this.button4.Location = new System.Drawing.Point(78, 504);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(39, 23);
             this.button4.TabIndex = 35;
@@ -85,7 +85,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(709, 531);
+            this.button3.Location = new System.Drawing.Point(180, 504);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(43, 23);
             this.button3.TabIndex = 34;
@@ -95,7 +95,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(590, 623);
+            this.button2.Location = new System.Drawing.Point(21, 595);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 23);
             this.button2.TabIndex = 33;
@@ -107,7 +107,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(547, 254);
+            this.label3.Location = new System.Drawing.Point(18, 227);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(189, 18);
             this.label3.TabIndex = 32;
@@ -115,12 +115,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button9);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(15, 232);
+            this.groupBox2.Location = new System.Drawing.Point(411, 260);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(487, 281);
+            this.groupBox2.Size = new System.Drawing.Size(487, 323);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Biblioteca";
@@ -208,7 +209,7 @@
             // reproductor
             // 
             this.reproductor.Enabled = true;
-            this.reproductor.Location = new System.Drawing.Point(550, 287);
+            this.reproductor.Location = new System.Drawing.Point(21, 260);
             this.reproductor.Name = "reproductor";
             this.reproductor.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("reproductor.OcxState")));
             this.reproductor.Size = new System.Drawing.Size(308, 226);
@@ -258,28 +259,9 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Nueva Lista";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.comboBox1);
-            this.groupBox4.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(913, 55);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(445, 431);
-            this.groupBox4.TabIndex = 39;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Listas Creadas";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(64, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 0;
-            // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(550, 531);
+            this.button7.Location = new System.Drawing.Point(21, 504);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(51, 23);
             this.button7.TabIndex = 40;
@@ -289,7 +271,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(758, 531);
+            this.button8.Location = new System.Drawing.Point(229, 504);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(61, 23);
             this.button8.TabIndex = 41;
@@ -297,22 +279,50 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(26, 271);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(135, 33);
+            this.button9.TabIndex = 12;
+            this.button9.Text = "Agregar a la Lista";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(1153, 32);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(69, 17);
+            this.listBox2.TabIndex = 43;
+            this.listBox2.Visible = false;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(919, 55);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(170, 212);
+            this.listBox1.TabIndex = 42;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1370, 667);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.reproductor);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -325,7 +335,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.reproductor)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,10 +363,11 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
