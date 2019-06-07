@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows.Forms; 
 
 //
 using YoutubeExplode;
@@ -18,9 +18,9 @@ namespace ProyectoFinalReproductorMP3
 {
     public partial class Form1 : Form
     {
-        int contador = -1;
         List<ClassCancion> listCancion = new List<ClassCancion>();
-
+        List<ClassLista> listLista = new List<ClassLista>();
+        int contador = -1;
 
         public Form1()
         {
@@ -104,12 +104,14 @@ namespace ProyectoFinalReproductorMP3
             FileStream stream = new FileStream("Cancion.json", FileMode.Append, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
             MessageBox.Show("La Canción: " + cancionJson.Nombre + " Se Registro Correctamente en la Biblioteca");
-
+            this.dataGridView1.Refresh();
             writer.WriteLine(salida);
             writer.Close();
 
             return;
         }
+
+       
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -200,6 +202,7 @@ namespace ProyectoFinalReproductorMP3
                 int inu;
                 inu = dataGridView1.CurrentRow.Index;
                 reproductor.URL = dataGridView1[1, inu].Value.ToString();
+                label3.Text = System.IO.Path.GetFileName(reproductor.URL);
             }
             else
             {
@@ -208,10 +211,7 @@ namespace ProyectoFinalReproductorMP3
                 int inu;
                 inu = dataGridView1.CurrentRow.Index;
                 reproductor.URL = dataGridView1[1, inu].Value.ToString();
-
-
-
-
+                label3.Text = System.IO.Path.GetFileName(reproductor.URL);
             }
         }
 
@@ -226,6 +226,7 @@ namespace ProyectoFinalReproductorMP3
 
                 inu = dataGridView1.CurrentRow.Index;
                 reproductor.URL = dataGridView1[1, inu].Value.ToString();
+                label3.Text = System.IO.Path.GetFileName(reproductor.URL);
             }
             else
             {
@@ -234,7 +235,7 @@ namespace ProyectoFinalReproductorMP3
 
                 inu = dataGridView1.CurrentRow.Index;
                 reproductor.URL = dataGridView1[1, inu].Value.ToString();
-
+                label3.Text = System.IO.Path.GetFileName(reproductor.URL);
 
             }
         }
@@ -243,6 +244,138 @@ namespace ProyectoFinalReproductorMP3
         {
             listBox2.Items.Add(this.dataGridView1.CurrentRow.Cells[1].Value.ToString());
             listBox1.Items.Add(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());            
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+        }
+
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            dataGridView2.Refresh();
+            dataGridView2.Update();
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            //Directorio en donde se va a iniciar la busqueda
+            openFileDialog1.InitialDirectory = @"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\";
+            //Tipos de archivos que se van a buscar
+            openFileDialog1.Filter = "json files (*.json)|*.json|All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                //Guardamos en una variable el nombre del archivo que abrimos
+                string fileName = openFileDialog1.FileName;
+                // label1.Text = openFileDialog1.FileName;
+                label6.Text = System.IO.Path.GetFileName(openFileDialog1.FileName);
+                //File.Delete(label1.Text);
+
+                //MessageBox.Show("La lista a sido eliminada");
+
+                //label1.Text = "";
+                FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + label6.Text, FileMode.Open, FileAccess.Read);
+                StreamReader reader = new StreamReader(stream);
+                while (reader.Peek() > -1)
+                {
+                    string lectura = reader.ReadLine();
+                    ClassLista listaLeido = JsonConvert.DeserializeObject<ClassLista>(lectura);
+                    listLista.Add(listaLeido);
+
+
+                }
+                reader.Close();
+                //Mostrar la lista de alquileres en el gridview
+                dataGridView2.DataSource = listLista;
+                dataGridView2.Refresh();
+
+                dataGridView2.Update();
+                this.Refresh();
+            }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            reproductor.URL = dataGridView2.CurrentCell.Value.ToString();
+            label3.Text = System.IO.Path.GetFileName(reproductor.URL);
+            reproductor.Ctlcontrols.play();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            //Directorio en donde se va a iniciar la busqueda
+            openFileDialog1.InitialDirectory = @"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\";
+            //Tipos de archivos que se van a buscar
+            openFileDialog1.Filter = "json files (*.json)|*.json|All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                //Guardamos en una variable el nombre del archivo que abrimos
+                string fileName = openFileDialog1.FileName;
+                // label1.Text = openFileDialog1.FileName;
+                label1.Text = System.IO.Path.GetFileName(openFileDialog1.FileName);
+                //File.Delete(label1.Text);
+
+                //MessageBox.Show("La lista a sido eliminada");
+
+                //label1.Text = "";
+                FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + label1.Text, FileMode.Open, FileAccess.Read);
+                StreamReader reader = new StreamReader(stream);
+                while (reader.Peek() > -1)
+                {
+                    string lectura = reader.ReadLine();
+                    ClassCancion cancionLeido = JsonConvert.DeserializeObject<ClassCancion>(lectura);
+                    listCancion.Add(cancionLeido);
+                    listBox1.Items.Add(cancionLeido.Nombre);
+                    listBox2.Items.Add(cancionLeido.Ubicacion);
+
+
+                }
+                reader.Close();
+                //Mostrar la lista de alquileres en el gridview
+                // listBox1.Text = Convert.ToString(listCancion);
+                listBox1.Refresh();
+
+                //dataGridView1.Update();
+                this.Refresh();
+            }
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            int listBoxSelectedItem = listBox1.SelectedIndex;
+            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            listBox2.Items.RemoveAt(listBoxSelectedItem);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            //Guardar el archivo de texto, con extension Json
+            FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + label1.Text, FileMode.Create, FileAccess.Write);
+            StreamWriter writer = new StreamWriter(stream);
+            MessageBox.Show("La Lista: " + label1.Text + " se Registro Correctamente");
+            // writer.WriteLine(salida);
+            //writer.Close();
+            foreach (string k in listBox2.Items)
+            {
+                //Declarar un objeto de Clase cliente
+                ClassLista listaJson = new ClassLista();
+                //Asignarle valores al cliente
+                listaJson.Nombre = System.IO.Path.GetFileName(k);
+                listaJson.Ubicacion = k;
+
+                //Convertir el objeto en una cadena JSON
+                string salida = JsonConvert.SerializeObject(listaJson);
+
+                writer.WriteLine(salida);
+                // musicas.Add(k);
+
+
+            }
+            writer.Close();
         }
     }
 }
