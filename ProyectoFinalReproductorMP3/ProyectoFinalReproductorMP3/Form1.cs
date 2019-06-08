@@ -167,7 +167,7 @@ namespace ProyectoFinalReproductorMP3
             //Guardar el archivo de texto, con extension Json
             FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + textBox1.Text + ".json", FileMode.Append, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
-            MessageBox.Show("La Lista: " + textBox1.Text + " se Creó Correctamente");
+            MessageBox.Show("La Lista: " + textBox1.Text + " Se Guardo Correctamente");
             // writer.WriteLine(salida);
             //writer.Close();
             foreach (string k in listBox2.Items)
@@ -246,10 +246,7 @@ namespace ProyectoFinalReproductorMP3
             listBox1.Items.Add(this.dataGridView1.CurrentRow.Cells[0].Value.ToString());            
         }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            listBox1.Items.RemoveAt(listBox1.SelectedIndex);
-        }
+        
 
 
         private void button12_Click(object sender, EventArgs e)
@@ -304,6 +301,7 @@ namespace ProyectoFinalReproductorMP3
 
         private void button11_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             //Directorio en donde se va a iniciar la busqueda
@@ -316,13 +314,13 @@ namespace ProyectoFinalReproductorMP3
                 //Guardamos en una variable el nombre del archivo que abrimos
                 string fileName = openFileDialog1.FileName;
                 // label1.Text = openFileDialog1.FileName;
-                label1.Text = System.IO.Path.GetFileName(openFileDialog1.FileName);
+                label7.Text = System.IO.Path.GetFileName(openFileDialog1.FileName);
                 //File.Delete(label1.Text);
 
                 //MessageBox.Show("La lista a sido eliminada");
 
                 //label1.Text = "";
-                FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + label1.Text, FileMode.Open, FileAccess.Read);
+                FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + label7.Text, FileMode.Open, FileAccess.Read);
                 StreamReader reader = new StreamReader(stream);
                 while (reader.Peek() > -1)
                 {
@@ -354,9 +352,9 @@ namespace ProyectoFinalReproductorMP3
         private void button14_Click(object sender, EventArgs e)
         {
             //Guardar el archivo de texto, con extension Json
-            FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + label1.Text, FileMode.Create, FileAccess.Write);
+            FileStream stream = new FileStream(@"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + label7.Text, FileMode.Create, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
-            MessageBox.Show("La Lista: " + label1.Text + " se Registro Correctamente");
+            MessageBox.Show("La Lista: " + label7.Text + " se Registro Correctamente");
             // writer.WriteLine(salida);
             //writer.Close();
             foreach (string k in listBox2.Items)
@@ -376,6 +374,34 @@ namespace ProyectoFinalReproductorMP3
 
             }
             writer.Close();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            //Directorio en donde se va a iniciar la busqueda
+            openFileDialog1.InitialDirectory = @"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\";
+            //Tipos de archivos que se van a buscar
+            openFileDialog1.Filter = "json files (*.json)|*.json|All files (*.*)|*.*";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                //Guardamos en una variable el nombre del archivo que abrimos
+                string fileName = openFileDialog1.FileName;
+                // label1.Text = openFileDialog1.FileName;
+                label8.Text = System.IO.Path.GetFileName(openFileDialog1.FileName);
+                textBox2.Text = label8.Text;              
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string archivo = @"C:\Users\DELL\Source\Repos\ProyectoFinalReproductor\ProyectoFinalReproductorMP3\ProyectoFinalReproductorMP3\bin\Debug\MisListas\" + textBox2.Text;
+
+            File.Delete(archivo);
+            MessageBox.Show("La Lista: " + textBox2.Text + " Se Eliminó Correctamente");
+            textBox2.Text = "";
         }
     }
 }
