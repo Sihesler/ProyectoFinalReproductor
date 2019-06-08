@@ -96,7 +96,8 @@ namespace ProyectoFinalReproductorMP3
             //Asignarle valores al cliente
             cancionJson.Nombre = nombre;
             cancionJson.Ubicacion = SaveMP3File;
-            
+            cancionJson.Imagen = pictureBox1.ImageLocation;
+
 
             //Convertir el objeto en una cadena JSON
             string salida = JsonConvert.SerializeObject(cancionJson);
@@ -136,14 +137,24 @@ namespace ProyectoFinalReproductorMP3
         {
             reproductor.URL = dataGridView1.CurrentCell.Value.ToString();
             label3.Text = System.IO.Path.GetFileName(reproductor.URL);
+            pictureBox1.ImageLocation = dataGridView1.CurrentCell.Selected.ToString();
             reproductor.Ctlcontrols.play();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            //Se abre un cuadro de dialogo para seleccionar la imagen a guardar en la lista.
+            OpenFileDialog imag = new OpenFileDialog();
+            imag.Filter = "Archivos de Imagen|*.jpg";
+            imag.FileName = "";
+            imag.Title = "Seleccionar Imagen";
+            imag.InitialDirectory = @"D:\Imagen";
+            if (imag.ShowDialog() == DialogResult.OK)
             {
-                reproductor.URL = openFileDialog1.FileName;
+                //Se obtiene la infomacion de la imagen seleccionada.
+                String direc = imag.FileName;
+                pictureBox1.ImageLocation = direc;
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 

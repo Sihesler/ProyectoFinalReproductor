@@ -67,10 +67,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button15 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -79,6 +80,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button5
@@ -113,11 +115,12 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(21, 595);
+            this.button2.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(194, 581);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 23);
+            this.button2.Size = new System.Drawing.Size(96, 42);
             this.button2.TabIndex = 33;
-            this.button2.Text = "Elegir Cancion";
+            this.button2.Text = "Elegir Imagen";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -443,6 +446,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Eliminar Lista";
             // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(193, 61);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(74, 40);
+            this.button15.TabIndex = 12;
+            this.button15.Text = "Eliminar";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(107, 61);
@@ -470,21 +483,20 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "Nombre Lista";
             // 
-            // button15
+            // pictureBox1
             // 
-            this.button15.Location = new System.Drawing.Point(193, 61);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(74, 40);
-            this.button15.TabIndex = 12;
-            this.button15.Text = "Eliminar";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.pictureBox1.Location = new System.Drawing.Point(21, 533);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(162, 135);
+            this.pictureBox1.TabIndex = 49;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 656);
+            this.ClientSize = new System.Drawing.Size(1370, 680);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -521,6 +533,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -569,6 +582,7 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

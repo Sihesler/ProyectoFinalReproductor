@@ -10,6 +10,7 @@ namespace ProyectoFinalReproductorMP3
     {
         string nombre;
         string ubicacion;
+        string imagen;
 
         public string Nombre
         {
@@ -34,6 +35,19 @@ namespace ProyectoFinalReproductorMP3
             set
             {
                 ubicacion = value;
+            }
+        }
+
+        public string Imagen
+        {
+            get
+            {
+                return imagen;
+            }
+
+            set
+            {
+                imagen = value;
             }
         }
     }
